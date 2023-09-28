@@ -6,7 +6,7 @@
 #    By: cdumais <cdumais@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 21:05:52 by cdumais           #+#    #+#              #
-#    Updated: 2023/09/28 16:23:31 by cdumais          ###   ########.fr        #
+#    Updated: 2023/09/28 16:28:51 by cdumais          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -207,7 +207,7 @@ nm:
 # ---------------------------------- PDF ------------------------------------- #
 # **************************************************************************** #
 pdf:
-# @open https:// (TODO)
+# @open https://
 
 # **************************************************************************** #
 # ---------------------------------- BACKUP ---------------------------------- #
@@ -243,7 +243,7 @@ VERBOSE		:= --verbose
 LOG_FILE	:= --log-file=valgrind-out.txt
 
 # suppression-related options
-SUPP_FILE	:= soupe.supp
+SUPP_FILE	:= suppression.supp
 SUPP_GEN	:= --gen-suppressions=all
 SUPPRESS	:= --suppressions=$(SUPP_FILE)
 
@@ -267,7 +267,7 @@ leaks: all
 supp: C_FLAGS += -g
 supp: all
 	$(SUPP_TOOL) ./$(NAME)
-	awk '/^{/,/^}/' valgrind-out.txt > soupe.supp
+	awk '/^{/,/^}/' valgrind-out.txt > suppression.supp
 
 # use suppression file
 suppleaks: C_FLAGS += -g
@@ -281,7 +281,7 @@ suppleaks: all
 
 # lclean only if files to suppress exist
 lclean:
-	@if [ -n "$(wildcard soupe.supp)" ]; then \
+	@if [ -n "$(wildcard suppression.supp)" ]; then \
 		$(REMOVE) $(SUPP_FILE); \
 		echo "$(BOLD)$(PURPLE)$(NAME)$(RESET)$(GREEN) suppression file removed$(RESET)"; \
 	else \
