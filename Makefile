@@ -462,8 +462,6 @@ help:
 	@echo "  rclean     Remove readline source files"
 	@echo "  ffclean    fclean, vclean and rclean"
 	@echo "  title      Print the project title"
-	@echo "  animate    animation test (end with SIGINT (CTRL+C))"
-	@echo "  colortest  Print all 256 colors"
 	@echo "  help       Print this help message"
 	@echo "\n"
 
