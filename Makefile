@@ -128,7 +128,7 @@ $(NAME): $(LIBFT) $(OBJS) $(INCS) $(READLINE_DEP)
 	@$(COMPILE) $(C_FLAGS) $(HEADERS) $(OBJS) $(LIBFT) $(LDFLAGS) -o $@
 
 $(LIBFT): $(LIBFT_SRCS) $(LIBFT_HDR)
-	@make -C $(LIBFT_DIR) $(NPD) $(JOBS)
+	@make -C $(LIBFT_DIR) $(NPD)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCS) | $(OBJ_DIR)
 	@echo "$(CYAN)Compiling...$(ORANGE)\t$(notdir $<)$(RESET)"
