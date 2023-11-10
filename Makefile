@@ -261,12 +261,16 @@ endif
 USER		:=$(shell whoami)
 ROOT_DIR	:=$(notdir $(shell pwd))
 TIMESTAMP	:=$(shell date "+%Y%m%d_%H%M%S")
-BACKUP_NAME	:=$(ROOT_DIR)_$(USER)_backup_$(TIMESTAMP).zip
+BACKUP_NAME	:=$(ROOT_DIR)_$(USER)_$(TIMESTAMP).zip
+BACKUP_NAME	:=$(ROOT_DIR)_$(USER)_$(TIMESTAMP).zip
+MOVE_TO		:= ~/Desktop/$(BACKUP_NAME)
 
 backup: ffclean
 	@if which zip > $(VOID); then \
-		zip -r $(BACKUP_NAME) ./*; \
-		mv $(BACKUP_NAME) ~/Desktop/; \
+		zip -r --quiet $(BACKUP_NAME) ./*; \
+		mv $(BACKUP_NAME) $(MOVE_TO); \
+		echo "[$(BOLD)$(PURPLE)$(NAME)$(RESET)] \
+		compressed as: $(CYAN)$(UNDERLINE)$(MOVE_TO)$(RESET)"; \
 	else \
 		echo "Please install zip to use the backup feature"; \
 	fi
