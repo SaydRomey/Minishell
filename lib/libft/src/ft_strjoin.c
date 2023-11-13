@@ -25,7 +25,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	const char	*end1;
 	const char	*end2;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
 	end1 = s1;
 	end2 = s2;
@@ -54,7 +54,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t	len_s1;
 	size_t	len_s2;
 
-	if (!s1 && !s2)
+	if (!s2)
 		return (NULL);
 	if (s1)
 		len_s1 = ft_strlen(s1);
